@@ -36,6 +36,15 @@
     }
   }
 
+  &--green {
+    background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+    color: $color-white;
+
+    &::after {
+      background-image: linear-gradient(to right bottom, $color-primary-light, $color-primary-dark);
+    }
+  }
+
   &::after {
     content: "";
     display: inline-block;
