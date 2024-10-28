@@ -5,12 +5,22 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile:sass": "sass sass/main.scss css/style.css -w"
+    "watch:sass": "sass sass/main.scss css/style.css -w",
+    "compile:sass": "sass sass/main.scss css/style.comp.css",
+    "concat:sass": "concat -o css/style.concat.css  css/style.comp.css",
+    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/style.concat.css -o css/style.prefix.css",
+    "compress:css": "sass css/style.prefix.css css/style.css --style=compressed",
+    "build:css": "pnpm run compile:sass && pnpm run concat:sass && pnpm run prefix:css && pnpm run compress:css"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "sass": "^1.77.8"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "concat": "^1.0.3",
+    "postcss-cli": "^11.0.0"
   }
 }
